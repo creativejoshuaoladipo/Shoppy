@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Shoppy.Models.Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+ 
+<div class="container pt-2">
+    <div class=" row pl-2">       
+        <div class="col-6"> <h2 class="text-primary"> Category List</h2></div>
+        <div class="col-6 text-right"> 
+        <a asp-controller="Category" asp-action="Create"><h2 class="btn btn-primary"> 
+           <i class="fas fa-plus"></i> &nbsp; Add New Category</h2></a>  
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped" style="width:100%" >
+        <thead>
+            <tr>
+                <th> Category Names </th>
+                <th> Display Order </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var x in Model)
+            {
+            <tr>
+                <td width="50%">@x.Name </td>
+                <td width="50%">@x.DisplayOrder</td>
+                <td>
+                   
+                    <div class="btn-group " role="group">
+                        <a asp-controller="Category" asp-route-Id=@x.Id asp-action="Edit" class="btn btn-info mx-2"> <i class="fas fa-edit"></i> &nbsp; Edit</a>
+                        <a asp-controller="Category" asp-route-Id=@x.Id asp-action="Delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i> &nbsp;  Delete</a>
+                    </div>
+                </td>
+            </tr>             
+            }
+          
+            </tbody>
+
+
+    </table>
+
+</div>
+

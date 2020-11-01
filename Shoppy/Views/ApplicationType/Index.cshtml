@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Shoppy.Models.ApplicationType>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container pt-2">
+    <div class=" row pl-1">
+      <div class="col-6"><h1 class="text-primary">Application List</h1> </div>  
+      <div class="col-6 text-right"> <a asp-action="Create" class="btn btn-primary">Add New Application</a></div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th> Application Name </th>
+                <th> </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td> @x.Name </td>
+                    <td>
+                        <div class=" btn-group " role="group">
+                        <a class="btn btn-info mx-2" asp-route-Id=@x.Id asp-action="Edit"> <i class="fas fa-edit"></i> &nbsp; Edit</a>
+                         <a class="btn btn-danger" asp-route-Id=@x.Id asp-action="Delete"><i class="fas fa-trash-alt"></i> &nbsp;  Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+</div>
+

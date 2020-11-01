@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Product> 
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Product</h1>
+
+<div class="container pt-2">
+    <div class=" row pl-2">
+        <div class="col-6"> <h2 class="text-primary"> Product List</h2></div>
+        <div class="col-6 text-right">
+            <a asp-controller="Product" asp-action="Upsert">
+                <h2 class="btn btn-primary">
+                    <i class="fas fa-plus"></i> &nbsp; Add New Product                
+                </h2>
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th> Product Names </th>
+                <th> Short Description</th>
+                <th> Description</th>
+                <th> Price</th>
+                <th> Image</th>
+                <th> Category Id</th>
+                <th> Application Type</th>
+
+
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var x in Model)
+            {
+            <tr>
+                <td width="50%">@x.Name </td>
+                <td width="50%">@x.ShortDesc</td>
+                <td width="50%">@x.Description</td>
+                <td width="50%">@x.Price</td>
+                <td width="50%">@x.Image</td>
+                <td width="50%">@x.CategoryId</td>
+                <td width="50%">@x.ApplicationTypeId</td>
+
+                <td>
+                    <div class="btn-group " role="group">
+                        <a asp-controller="Product" asp-route-Id=@x.Id asp-action="Upsert" class="btn btn-info mx-2"> <i class="fas fa-edit"></i> &nbsp; Edit</a>
+                        <a asp-controller="Product" asp-route-Id=@x.Id asp-action="Delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i> &nbsp;  Delete</a>
+                    </div>
+                </td>
+            </tr>
+
+            }
+
+        </tbody>
+
+
+    </table>
+
+</div>
+
+
